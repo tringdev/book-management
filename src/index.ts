@@ -2,11 +2,15 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
+import connectDB from './config/database';
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
+
+// Connect to MongoDB
+connectDB();
 
 // Middleware
 app.use(cors());

@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
 import connectDB from './config/database';
+import routes from './routes';
 
 dotenv.config();
 
@@ -18,10 +19,13 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Basic route
+// Health check route
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({ message: 'success' });
 });
+
+// API Routes
+app.use('/api/v1', routes);
 
 // Start server
 app.listen(port, () => {

@@ -1,8 +1,8 @@
 # Book Management API
 
-RESTful API cho hệ thống quản lý sách sử dụng TypeScript và Express.js.
+A RESTful API for book management system built with TypeScript and Express.js.
 
-## Công nghệ sử dụng
+## Technologies Used
 
 - Node.js
 - TypeScript
@@ -11,7 +11,7 @@ RESTful API cho hệ thống quản lý sách sử dụng TypeScript và Express
 - Morgan (logging)
 - CORS
 
-## Cấu trúc thư mục
+## Project Structure
 
 ```
 project-root/
@@ -30,15 +30,15 @@ project-root/
 └── README.md         # Project documentation
 ```
 
-## Yêu cầu hệ thống
+## System Requirements
 
-- Node.js (v14 trở lên)
-- npm hoặc yarn
-- Docker (tùy chọn)
+- Node.js (v14 or higher)
+- npm or yarn
+- Docker (optional)
 
-## Cài đặt và Chạy
+## Setup and Running
 
-### Phát triển local
+### Local Development
 
 1. Clone repository:
 ```bash
@@ -46,39 +46,39 @@ git clone <repository-url>
 cd book-management
 ```
 
-2. Cài đặt dependencies:
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Tạo file môi trường:
+3. Set up environment:
 ```bash
 cp .env.example .env
 ```
 
-4. Chạy ở môi trường development:
+4. Run in development mode:
 ```bash
 npm run dev
 ```
 
-### Sử dụng Docker
+### Using Docker
 
-1. Build và chạy container:
+1. Build and run containers:
 ```bash
 docker-compose up
 ```
 
-2. Chỉ build container:
+2. Build containers only:
 ```bash
 docker-compose build
 ```
 
-## Scripts có sẵn
+## Available Scripts
 
-- `npm run dev`: Chạy môi trường development với hot-reload
-- `npm run build`: Build TypeScript thành JavaScript
-- `npm start`: Chạy ứng dụng đã được build
-- `npm run lint`: Kiểm tra lỗi với ESLint
+- `npm run dev`: Run development server with hot-reload
+- `npm run build`: Build TypeScript to JavaScript
+- `npm start`: Run the built application in production
+- `npm run lint`: Run ESLint for code linting
 
 ## API Endpoints
 
@@ -92,4 +92,4 @@ http://localhost:3000
 - `GET /`: Health check endpoint
   - Response: `{ "message": "success" }`
 
-(Các endpoint khác sẽ được thêm vào sau) 
+(More endpoints will be added later) 

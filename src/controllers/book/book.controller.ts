@@ -19,12 +19,14 @@ export const getAllBooks = async (req: Request, res: Response): Promise<void> =>
     const pageNumber = parseInt(page as string);
     const limitNumber = parseInt(limit as string);
 
-    const totalBooks = await Book.countDocuments(query);
-    const books = await Book.find(query)
-      .skip((pageNumber - 1) * limitNumber)
-      .limit(limitNumber)
-      .populate('authorId', 'name')
-      .populate('userId', 'email');
+    const [totalBooks, books] = await Promise.all([
+      Book.countDocuments(query),
+      Book.find(query)
+        .skip((pageNumber - 1) * limitNumber)
+        .limit(limitNumber)
+        .populate('authorId', 'name')
+        .populate('userId', 'email'),
+    ]);
 
     res.status(200).json({
       success: true,

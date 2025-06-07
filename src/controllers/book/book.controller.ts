@@ -2,18 +2,36 @@ import { Request, Response } from 'express';
 import Book from '../../models/Book';
 import { AuthRequest } from '../../middleware/auth/auth.middleware';
 
-// Get all books, with optional filter by authorId
+// Get all books
 export const getAllBooks = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { authorId } = req.query;
-    let query = {};
+    const { authorId, title, page = 1, limit = 10 } = req.query;
+    let query: any = {};
 
     if (authorId) {
-      query = { authorId };
+      query.authorId = authorId;
     }
 
-    const listBooks = await Book.find(query).populate('authorId', 'name').populate('userId', 'email');
-    res.status(200).json({ success: true, data: listBooks });
+    if (title) {
+      query.title = { $regex: title, $options: 'i' }; 
+    }
+
+    const pageNumber = parseInt(page as string);
+    const limitNumber = parseInt(limit as string);
+
+    const totalBooks = await Book.countDocuments(query);
+    const books = await Book.find(query)
+      .skip((pageNumber - 1) * limitNumber)
+      .limit(limitNumber)
+      .populate('authorId', 'name')
+      .populate('userId', 'email');
+
+    res.status(200).json({
+      success: true,
+      total: totalBooks,
+      page: pageNumber,
+      data: books,
+    });
   } catch (error) {
     console.error('Error getting list books:', error);
     res.status(500).json({ success: false, message: 'Error getting list books' });

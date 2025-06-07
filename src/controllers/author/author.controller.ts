@@ -110,7 +110,7 @@ export const updateAuthor = async (
     if (author.userId.toString() !== req.userId) {
       res.status(403).json({
         success: false,
-        message: "Not authorized to update this author",
+        message: "You are not authorized to update this author",
       });
       return;
     }
@@ -154,34 +154,21 @@ export const deleteAuthor = async (
     if (author.userId.toString() !== req.userId) {
       res.status(403).json({
         success: false,
-        message: "Not authorized to delete this author",
+        message: "You are not authorized to delete this author",
       });
       return;
     }
 
-    // Start a session for transaction
-    const session = await Author.startSession();
-    session.startTransaction();
+    // Delete author
+    await Author.findByIdAndDelete(req.params.id);
 
-    try {
-      // Delete author
-      await Author.findByIdAndDelete(req.params.id).session(session);
+    // Delete all books by this author
+    await Book.deleteMany({ authorId: req.params.id });
 
-      // Delete all books by this author
-      await Book.deleteMany({ authorId: req.params.id }).session(session);
-
-      await session.commitTransaction();
-
-      res.status(200).json({
-        success: true,
-        message: "Author and their books deleted successfully",
-      });
-    } catch (error) {
-      await session.abortTransaction();
-      throw error;
-    } finally {
-      session.endSession();
-    }
+    res.status(200).json({
+      success: true,
+      message: "Author and their books deleted successfully",
+    });
   } catch (error) {
     console.error("Error deleting author:", error);
     res.status(500).json({

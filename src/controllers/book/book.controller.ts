@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import Book from '../../models/Book';
-import { AuthRequest } from '../../middleware/auth/auth.middleware';
+import Book from '@/models/Book';
+import { AuthRequest } from '@/middleware/auth/auth.middleware';
 
 // Get all books
 export const getAllBooks = async (req: Request, res: Response): Promise<void> => {
@@ -120,4 +120,4 @@ export const deleteBook = async (req: AuthRequest, res: Response): Promise<void>
     console.error('Error deleting book:', error);
     res.status(500).json({ success: false, message: 'Error deleting book' });
   }
-}; 
+};

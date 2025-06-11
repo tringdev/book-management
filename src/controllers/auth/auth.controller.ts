@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import User from '../../models/User';
+import User from '@/models/User';
 
 // Register user
 export const register = async (req: Request, res: Response): Promise<void> => {
@@ -87,4 +87,4 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       message: 'Error logging in ' + JSON.stringify(error)
     });
   }
-}; 
+};

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import Author from '../../models/Author';
+import Author from '@/models/Author';
 
 export const validateBook = async (
   req: Request,

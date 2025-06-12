@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import authRoutes from '@/routes/auth/auth.routes';
-import authorRoutes from '@/routes/author/author.routes';
-import bookRoutes from '@/routes/book/book.routes';
+import authRoutes from './auth/auth.routes';
+import authorRoutes from './author/author.routes';
+import bookRoutes from './book/book.routes';
 
 const router = Router();
 
@@ -14,4 +14,4 @@ router.use('/author', authorRoutes);
 // Book routes
 router.use('/book', bookRoutes);
 
-export default router;
+export default router; 

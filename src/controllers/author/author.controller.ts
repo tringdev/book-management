@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import Author from "@/models/Author";
-import Book from "@/models/Book";
-import { AuthRequest } from "@/middleware/auth/auth.middleware";
+import Author from "../../models/Author";
+import Book from "../../models/Book";
+import { AuthRequest } from "../../middleware/auth/auth.middleware";
 
 // Get all authors
 export const getAllAuthors = async (

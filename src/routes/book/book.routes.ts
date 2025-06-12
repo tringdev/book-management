@@ -5,9 +5,9 @@ import {
   createBook,
   updateBook,
   deleteBook,
-} from '@/controllers/book/book.controller';
-import { authenticate } from '@/middleware/auth/auth.middleware';
-import { validateBook } from '@/middleware/book/validation.middleware';
+} from '../../controllers/book/book.controller';
+import { authenticate } from '../../middleware/auth/auth.middleware';
+import { validateBook } from '../../middleware/book/validation.middleware';
 
 const router = Router();
 

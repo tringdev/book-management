@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import Book from '../../models/Book';
-import { AuthRequest } from '../../middleware/auth/auth.middleware';
+import Book from '@/models/Book';
+import { AuthRequest } from '@/middleware/auth/auth.middleware';
 
 // Get all books
 export const getAllBooks = async (req: Request, res: Response): Promise<void> => {

@@ -1,9 +1,10 @@
+import 'module-alias/register';
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
-import connectDB from './config/database';
-import routes from './routes';
+import connectDB from '@/config/database';
+import routes from '@/routes';
 
 dotenv.config();
 
@@ -30,4 +31,4 @@ app.use('/api/v1', routes);
 // Start server
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
-}); 
+});

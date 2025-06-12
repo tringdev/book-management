@@ -5,9 +5,9 @@ import {
   createAuthor, 
   updateAuthor, 
   deleteAuthor 
-} from '../../controllers/author/author.controller';
-import { authenticate } from '../../middleware/auth/auth.middleware';
-import { validateAuthor } from '../../middleware/author/validation.middleware';
+} from '@/controllers/author/author.controller';
+import { authenticate } from '@/middleware/auth/auth.middleware';
+import { validateAuthor } from '@/middleware/author/validation.middleware';
 
 const router = Router();
 

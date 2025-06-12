@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 import { Request, Response } from 'express';
 import Book from '@/models/Book';
 import { AuthRequest } from '@/middleware/auth/auth.middleware';
-=======
-import { Request, Response } from "express";
-import Book from "@/models/Book";
-import { AuthRequest } from "@/middleware/auth/auth.middleware";
->>>>>>> 66a44eb2d33c6e1669cfb7362488f21efcb76b16
 
 // Get all books
 export const getAllBooks = async (

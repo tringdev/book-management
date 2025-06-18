@@ -9,11 +9,11 @@ export const getAllAuthors = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { title, page = 1, limit = 10 } = req.query;
+    const { name, page = 1, limit = 10 } = req.query;
     let query: any = {};
 
-    if (title) {
-      query.name = { $regex: title, $options: "i" };
+    if (name) {
+      query.name = { $regex: name, $options: "i" };
     }
 
     const pageNumber = parseInt(page as string);

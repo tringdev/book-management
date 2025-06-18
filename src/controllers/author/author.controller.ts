@@ -9,16 +9,15 @@ export const getAllAuthors = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { name, page = 1, limit = 10 } = req.query;
+    const { title, page = 1, limit = 10 } = req.query;
     let query: any = {};
 
-    if (name) {
-      query.name = { $regex: name, $options: "i" };
+    if (title) {
+      query.name = { $regex: title, $options: "i" };
     }
 
     const pageNumber = parseInt(page as string);
     const limitNumber = parseInt(limit as string);
-
     const [totalAuthors, authors] = await Promise.all([
       Author.countDocuments(query),
       Author.find(query)
